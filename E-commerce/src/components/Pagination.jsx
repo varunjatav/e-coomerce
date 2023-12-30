@@ -4,23 +4,24 @@ import { paginationActions } from "../store/paginationSlice";
 const Pagination = () => {
   const dispatch = useDispatch();
   const skip = useSelector((store) => store.page);
+  
 
   const handlePre = () => {
-    dispatch(paginationActions.previous());
+    dispatch(paginationActions.previous(10));
   };
   const handleIncrementby10 = () => {
-    dispatch(paginationActions.incrementby10());
+    dispatch(paginationActions.incrementby10(10));
   };
 
   const handleIncrementby20 = () => {
-    dispatch(paginationActions.incrementby20());
+    dispatch(paginationActions.incrementby20(20));
   };
   const handleIncrementby30 = () => {
-    dispatch(paginationActions.incrementby30());
+    dispatch(paginationActions.incrementby30(30));
   };
 
   const handleNext = () => {
-    dispatch(paginationActions.next());
+    dispatch(paginationActions.next(10));
   };
   return (
     <nav aria-label="..." className="d-flex justify-content-center">

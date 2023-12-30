@@ -5,19 +5,19 @@ const paginationSlice = createSlice({
   initialState: 0,
   reducers: {
     incrementby10: (state, action) => {
-      return (state = 10);
+      return (state = action.payload);
     },
     incrementby20: (state, action) => {
-      return (state = 20);
+      return (state = action.payload);
     },
     incrementby30: (state, action) => {
-      return (state = 30);
+      return (state = action.payload);
     },
     previous: (state, action) => {
-      return (state -= 10);
+      return (state -= action.payload);
     },
     next: (state, action) => {
-      return (state += 10);
+      return (state += action.payload);
     },
   },
 });

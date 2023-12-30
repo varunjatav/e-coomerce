@@ -1,32 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { itemActions } from "../store/itemSlice";
-import Card from "./Card";
+import React from "react";
+import { useSelector } from "react-redux";
+
+
 import Pagination from "./Pagination";
+import Carousel from "./Carousel";
+import CardContainer from "./CardContainer";
+import Loader from "./Loader";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const skip = useSelector(store => store.page);
-  // console.log(skip);
-  const items = useSelector((store) => store.items);
+   const fetchStatus = useSelector((store) => store.fetch);
 
-
-  useEffect(() => {
-    fetch(`https://dummyjson.com/products?limit=10&skip=${skip}`)
-      .then((res) => res.json())
-      .then((data) => {
-       
-        dispatch(itemActions.getAllProducts(data.products));
-      });
-  }, [skip]);
   return (
     <>
-      <div className="items-container my-5">
-        {items.map((item) => (
-          <Card item={item} key={item.id} />
-        ))}
-      </div>
-      <Pagination  />
+      <Carousel />
+      {fetchStatus.currentlyFetching ? <Loader/> : <CardContainer/>}
+      
+      <Pagination />
     </>
   );
 };
