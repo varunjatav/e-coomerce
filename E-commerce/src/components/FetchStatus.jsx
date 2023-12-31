@@ -8,10 +8,8 @@ const FetchStatus = () => {
   const dispatch = useDispatch();
 
   const query = useSelector((store) => store.query);
-  const skip = useSelector((store) => store.page);
-  console.log(skip, query);
-  // const fetchStatus = useSelector((store) => store.fetch);
-  // console.log(fetchStatus);
+  let skip = useSelector((store) => store.page);
+ 
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
@@ -23,7 +21,7 @@ const FetchStatus = () => {
         { signal }
       )
       .then((res) => {
-        console.log(res.data.products);
+       
         dispatch(fetchActions.markFetchDone());
         dispatch(fetchActions.markFetchingFinished());
         dispatch(itemActions.getAllProducts(res.data.products));

@@ -4,6 +4,7 @@ import itemSlice from "./itemSlice";
 import paginationSlice from "./paginationSlice";
 import fetchingSlice from "./fetchingSlice";
 import QuerySlice from "./QuerySlice";
+import singleItemSlice from "./singleItemSlice";
 
 
  
@@ -12,7 +13,8 @@ const store =  configureStore({
         items : itemSlice.reducer,
         page: paginationSlice.reducer,
         fetch: fetchingSlice.reducer,
-        query: QuerySlice.reducer
+        query: QuerySlice.reducer,
+        singleItem: singleItemSlice.reducer,
     },
 });
 

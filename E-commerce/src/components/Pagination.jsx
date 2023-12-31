@@ -3,8 +3,10 @@ import { paginationActions } from "../store/paginationSlice";
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const skip = useSelector((store) => store.page);
-  
+  let skip = useSelector((store) => store.page);
+  // let items = useSelector((store) => store.items);
+
+ 
 
   const handlePre = () => {
     dispatch(paginationActions.previous(10));
