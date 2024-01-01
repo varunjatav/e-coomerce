@@ -2,13 +2,15 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { singleItemActions } from "../store/singleItemSlice";
-import { CiStar } from "react-icons/ci";
+import { cartSliceAction } from "../store/cartSlice";
+import { MdDelete, MdAdd } from "react-icons/md";
 
 const SingleProduct = () => {
-  const { productId } = useParams();
+  let { productId } = useParams();
+  productId = Number(productId);
+  const cartItems = useSelector((store) => store.cart);
   const dispatch = useDispatch();
   const singleItem = useSelector((store) => store.singleItem);
-
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${productId}`)
       .then((res) => res.json())
@@ -19,6 +21,16 @@ const SingleProduct = () => {
   let discount = singleItem.price * (singleItem.discountPercentage / 100);
   let finalPrice = Math.round(singleItem.price - discount);
 
+  const foundItem = cartItems.indexOf(productId) >= 0;
+
+  const handleAddToCart = () => {
+    console.log("clicked add to cart function :", productId);
+    dispatch(cartSliceAction.addToCart(productId));
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch(cartSliceAction.removeFromCart(productId));
+  }
   return (
     <div className="container  my-5 h-[400px]">
       <div className="row gap-5">
@@ -48,10 +60,7 @@ const SingleProduct = () => {
           <p>{singleItem.description}</p>
           <h5>{singleItem.category}</h5>
 
-          <div className="d-flex align-items-center gap-2">
-            <CiStar className="fs-2" />
-            <h4>{singleItem.rating}</h4>
-          </div>
+          <div className="rating">⭐ | {singleItem.rating}</div>
           <div className="d-flex gap-5">
             <div className="px-2 pt-2 pb-1 rounded-5 text-center">
               <h4 className="fw-bold">${finalPrice}</h4>
@@ -65,9 +74,23 @@ const SingleProduct = () => {
               <h4 className="text-danger">{singleItem.discountPercentage} %</h4>
             </div>
           </div>
-          <button className="btn btn-dark mt-2">
-            Add to Cart
-          </button>
+          {foundItem ? (
+            <button
+              type="button"
+              className="btn btn-danger mt-2"
+              onClick={handleRemoveFromCart}
+            >
+            <MdDelete />  Remove From Cart
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-dark mt-2"
+              onClick={handleAddToCart}
+            >
+            <MdAdd />  Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

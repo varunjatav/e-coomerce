@@ -13,9 +13,7 @@ const Card = ({ item }) => {
       <div className="card-body">
         <h5 className="card-title">{item.title}</h5>
         <p className="card-text">{item.description}</p>
-        <button  className="btn btn-primary">
-          Add to Cart
-        </button>
+       
       </div>
     </div>
     </Link>

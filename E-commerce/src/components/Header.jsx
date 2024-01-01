@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { BsFillCartXFill } from "react-icons/bs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { QueryActions } from "../store/QuerySlice";
 import { IoIosSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const searchEl = useRef("");
+  const cartItems =  useSelector(store => store.cart); 
   let search = "";
   const handleQuery = (e) => {
     search = searchEl.current.value;
@@ -83,7 +84,7 @@ const Header = () => {
           </div>
           <div className="px-4">
             <Link to='/cart'className="text-white text-decoration-none">
-            <span className="cart-count">0</span>
+            <span className="cart-count">{cartItems.length}</span>
             <BsFillCartXFill />
             </Link>
           </div>
