@@ -24,7 +24,7 @@ const FetchStatus = () => {
        
         dispatch(fetchActions.markFetchDone());
         dispatch(fetchActions.markFetchingFinished());
-        dispatch(itemActions.getAllProducts(res.data.products));
+        dispatch(itemActions.getAllProducts({ itemArr: res.data.products }));
       })
       .catch((err) => {
         console.log("Error: " + err.message);

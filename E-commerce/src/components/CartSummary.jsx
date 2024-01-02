@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CartSummary = () => {
   const cartItems = useSelector((store) => store.cart);
-  const items = useSelector((store) => store.items);
-  const quantity = useSelector((store) => store.quantity);
+  const items = useSelector((store) => store.items.itemArr);
+  const itemQuantity = useSelector((store) => store.items.quantity);
   const finalItems = items.filter((item) => {
     const ItemId = cartItems.indexOf(item.id);
     return ItemId >= 0;
@@ -14,14 +15,14 @@ const CartSummary = () => {
   if (cartItems <= 0) {
     CONVENIEINCE_FEES = 0;
   } else {
-    CONVENIEINCE_FEES = 99;
+    CONVENIEINCE_FEES = 9;
   }
 
   let totalMRP = 0;
   let totalDiscount = 0;
 
   finalItems.forEach((item) => {
-    totalMRP += item.price * quantity;
+    totalMRP += item.price * +(itemQuantity);
     totalDiscount += Math.round((item.price * item.discountPercentage)/100);
   });
   let finalPayment = totalMRP - totalDiscount + CONVENIEINCE_FEES;
@@ -59,9 +60,9 @@ const CartSummary = () => {
             </li>
           </ul>
 
-          <button type="button" className="btn btn-primary btn-lg btn-block">
+          <Link to="/checkout" type="button" className="btn btn-primary btn-lg btn-block">
             Go to checkout
-          </button>
+          </Link>
         </div>
       </div>
     </div>

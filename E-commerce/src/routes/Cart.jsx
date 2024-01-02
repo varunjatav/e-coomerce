@@ -4,7 +4,8 @@ import CartProducts from "../components/CartProducts";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart);
-  const items = useSelector((store) => store.items);
+  const items = useSelector(store => store.items.itemArr);
+  
   const finalItems = items.filter((item) => {
     const ItemId = cartItems.indexOf(item.id);
     return ItemId >= 0;

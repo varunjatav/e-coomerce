@@ -6,7 +6,6 @@ import fetchingSlice from "./fetchingSlice";
 import QuerySlice from "./QuerySlice";
 import singleItemSlice from "./singleItemSlice";
 import cartSlice from "./cartSlice";
-import quantitySlice from "./quantitySlice";
 
 
  
@@ -17,8 +16,7 @@ const store =  configureStore({
         fetch: fetchingSlice.reducer,
         query: QuerySlice.reducer,
         singleItem: singleItemSlice.reducer,
-        cart: cartSlice.reducer,
-        quantity: quantitySlice.reducer
+        cart: cartSlice.reducer
     },
 });
 
