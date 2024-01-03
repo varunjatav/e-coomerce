@@ -1,7 +1,9 @@
 import { useRef } from "react";
-import { useSelector } from "react-redux";
+import SuccessModal from "./Modal";
+
 
 const Billing = () => {
+ 
   const firstNameElement = useRef("");
   const lastNameElement = useRef("");
   const userNameElement = useRef("");
@@ -15,15 +17,9 @@ const Billing = () => {
   const creditCardNumberElement = useRef("");
   const expiryDateElement = useRef("");
   const cvvElement = useRef("");
+ 
 
-  const cartItems = useSelector((store) => store.cart);
-  const items = useSelector((store) => store.items.itemArr);
-  let finalItems = items.filter((item) => {
-    const ItemId = cartItems.indexOf(item.id);
-    return ItemId >= 0;
-  });
-  console.log(finalItems);
-  console.log(finalItems);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const firstName = firstNameElement.current.value;
@@ -65,15 +61,16 @@ const Billing = () => {
     zipElement.current.value = "";
     addressInfoElement.current.value = "";
     paymentOptionElement.current.value = "";
-    nameOnCardElement.current.value ="";
-    creditCardNumberElement.current.value ="";
+    nameOnCardElement.current.value = "";
+    creditCardNumberElement.current.value = "";
     expiryDateElement.current.value = "";
-    cvvElement.current.value ="";
-    finalItems = [];
+    cvvElement.current.value = "";
   };
 
+ 
+
   return (
-    <div className="col-md-8 order-md-1">
+    <div className="col-md-8 order-md-1 ">
       <h4 className="mb-3">Billing address</h4>
       <form className="needs-validation" noValidate="" onSubmit={handleSubmit}>
         <div className="row">
@@ -309,10 +306,16 @@ const Billing = () => {
           </div>
         </div>
         <hr className="mb-4" />
-        <button className="btn btn-primary btn-lg btn-block" type="submit">
+        <button
+          className="btn btn-primary btn-lg btn-block"
+          type="submit"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
           Buy
         </button>
       </form>
+      <SuccessModal/>
     </div>
   );
 };

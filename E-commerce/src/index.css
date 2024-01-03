@@ -18,3 +18,11 @@
   font-size: 12px;
   font-weight: 700;
 }
+.billing-div{
+  position: relative;
+}
+.payment-success{
+  position: absolute;
+  top: -800px;
+  right: 0;
+}

@@ -1,20 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
-
-import Pagination from "../components/Pagination";
 import Carousel from "../components/Carousel";
 import CardContainer from "../components/CardContainer";
-import Loader from "../components/Loader";
+import Pagination from "../components/Pagination";
 
 const Home = () => {
-
-
   return (
     <>
       <Carousel />
-      <CardContainer/>
-      
+      <CardContainer />
       <Pagination />
     </>
   );

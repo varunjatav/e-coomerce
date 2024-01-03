@@ -4,9 +4,6 @@ import { paginationActions } from "../store/paginationSlice";
 const Pagination = () => {
   const dispatch = useDispatch();
   let skip = useSelector((store) => store.page);
-  // let items = useSelector((store) => store.items);
-
- 
 
   const handlePre = () => {
     dispatch(paginationActions.previous(10));
