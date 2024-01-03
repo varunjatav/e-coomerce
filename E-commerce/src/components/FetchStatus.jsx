@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { itemActions } from "../store/itemSlice";
 import { fetchActions } from "../store/fetchingSlice";
 import axios from "axios";
+import { paginationActions } from "../store/paginationSlice";
 
 const FetchStatus = () => {
   const dispatch = useDispatch();
@@ -21,10 +22,13 @@ const FetchStatus = () => {
         { signal }
       )
       .then((res) => {
-       
+       console.log(res.data);
         dispatch(fetchActions.markFetchDone());
         dispatch(fetchActions.markFetchingFinished());
         dispatch(itemActions.getAllProducts( res.data.products ));
+        if(res.data.products.length <10 ){
+          dispatch(paginationActions.initial())
+        }
       })
       .catch((err) => {
         console.log("Error: " + err.message);
@@ -33,6 +37,9 @@ const FetchStatus = () => {
       controller.abort();
     };
   }, [skip,query]);
+
+
+  
 
   return <></>;
 };

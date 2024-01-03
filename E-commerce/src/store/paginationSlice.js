@@ -4,6 +4,9 @@ const paginationSlice = createSlice({
   name: "paginationSlice",
   initialState: 0,
   reducers: {
+    initial: (state, action) => {
+      return state = 0;
+    },
     incrementby10: (state, action) => {
       return (state = action.payload);
     },

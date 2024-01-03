@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 const YourCart = () => {
   const cartItems = useSelector((store) => store.cart);
-  const items = useSelector((store) => store.items.itemArr);
+  const items = useSelector((store) => store.items);
   const finalItems = items.filter((item) => {
     const ItemId = cartItems.indexOf(item.id);
     return ItemId >= 0;

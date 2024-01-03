@@ -4,7 +4,7 @@ import Card from './Card';
 
 const CardContainer = () => {
   const items = useSelector((store) => store.items);
-  console.log(items);
+  // console.log(items);
   return (
     <div className="items-container my-5">
         {items.map((item) => (

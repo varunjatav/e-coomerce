@@ -5,11 +5,13 @@ import { QueryActions } from "../store/QuerySlice";
 import { IoIosSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
+import { loginActions } from "../store/loginSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const searchEl = useRef("");
   const cartItems =  useSelector(store => store.cart); 
+  const login = useSelector((store) => store.login);
   let search = "";
   const handleQuery = (e) => {
     search = searchEl.current.value;
@@ -20,6 +22,9 @@ const Header = () => {
     dispatch(QueryActions.getByQuery(search));
     searchEl.current.value = "";
   };
+  const handleLogout = () => {
+    dispatch(loginActions.logOutUsers());
+  }
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -62,12 +67,13 @@ const Header = () => {
           </form>
 
           <div className="text-end">
-            <button type="button" className="btn btn-outline-light me-2">
-              Login
+            {
+              login === true && <button type="button" className="btn btn-outline-light me-2" onClick={handleLogout}>
+              Log out
             </button>
-            <button type="button" className="btn btn-warning">
-              Sign-up
-            </button>
+            }
+            
+         
           </div>
           <div className="px-4">
             

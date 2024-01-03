@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const CartSummary = () => {
   const cartItems = useSelector((store) => store.cart);
-  const items = useSelector((store) => store.items.itemArr);
+  const items = useSelector((store) => store.items);
   const itemQuantity = useSelector((store) => store.items.quantity);
   const finalItems = items.filter((item) => {
     const ItemId = cartItems.indexOf(item.id);

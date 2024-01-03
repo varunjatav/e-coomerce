@@ -6,6 +6,7 @@ import fetchingSlice from "./fetchingSlice";
 import QuerySlice from "./QuerySlice";
 import singleItemSlice from "./singleItemSlice";
 import cartSlice from "./cartSlice";
+import loginSlice from "./loginSlice";
 
 
  
@@ -16,7 +17,8 @@ const store =  configureStore({
         fetch: fetchingSlice.reducer,
         query: QuerySlice.reducer,
         singleItem: singleItemSlice.reducer,
-        cart: cartSlice.reducer
+        cart: cartSlice.reducer,
+        login: loginSlice.reducer
     },
 });
 
