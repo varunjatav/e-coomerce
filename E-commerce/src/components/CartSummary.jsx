@@ -22,7 +22,7 @@ const CartSummary = () => {
   let totalDiscount = 0;
 
   finalItems.forEach((item) => {
-    totalMRP += item.price * +(itemQuantity);
+    totalMRP += item.price ;
     totalDiscount += Math.round((item.price * item.discountPercentage)/100);
   });
   let finalPayment = totalMRP - totalDiscount + CONVENIEINCE_FEES;

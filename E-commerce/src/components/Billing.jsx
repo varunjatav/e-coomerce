@@ -267,7 +267,7 @@ const Billing = () => {
           <div className="col-md-6 mb-3">
             <label htmlFor="cc-number">Credit card number</label>
             <input
-              type="text"
+              type="password"
               className="form-control"
               id="cc-number"
               placeholder="Your card Number"
@@ -295,7 +295,7 @@ const Billing = () => {
           <div className="col-md-3 mb-3">
             <label htmlFor="cc-expiration">CVV</label>
             <input
-              type="text"
+              type="password"
               className="form-control"
               id="cc-cvv"
               placeholder="Your CVV"
