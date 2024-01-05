@@ -48,8 +48,8 @@ const SingleProduct = () => {
                 src={`${img}`}
                 alt={singleItem.title}
                 className="rounded-4"
-                width="100px"
-                height="100px"
+                width="80px"
+                height="80px"
               />
             ))}
           </div>
